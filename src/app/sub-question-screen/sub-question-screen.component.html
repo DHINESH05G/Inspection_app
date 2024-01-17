@@ -1,0 +1,22 @@
+<div class="container mt-3">
+  <h2>Conductor Inspection</h2>
+  <button class="btn btn-success">Save</button>
+  <!--<label>{{}}</label>-->
+  <h2>Sub-Questions for Question {{ mainQuestionIndex  + 1 }}</h2>
+  <div *ngFor="let subQuestion of subQuestions; let i = index" class="mb-2">
+    <div *ngIf="subQuestion.type === 'radio'">
+      <label>{{ subQuestion.text }}</label>
+      <div *ngFor="let option of subQuestion.options">
+        <input type="radio" name="subQuestion{{ i }}" [value]="option" /> {{ option }}
+      </div>
+    </div>
+    <div *ngIf="subQuestion.type === 'textarea'">
+      <label>{{ subQuestion.text }}</label>
+      <textarea name="subQuestion{{ i }}" class="form-control"></textarea>
+    </div>
+    <div *ngIf="subQuestion.type === 'input'">
+      <label>{{ subQuestion.text }}</label><br>
+      <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg, image/txt" />
+    </div>
+  </div>
+</div>

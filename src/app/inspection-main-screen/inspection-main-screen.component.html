@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  <div>
+    <h2>Conductor Inspection</h2>
+    <button class="btn btn-success">Save</button>
+  </div>
+  <div *ngFor="let question of mainQuestions; let i = index" class="card mb-2">
+    <div class="card-body">
+      <h5 class="card-title">Question {{ i + 1 }}</h5>
+      <p class="card-text">{{ question.text }}</p>
+      <a href="/sub-question" (click)="navigateToSubQuestion(i)" class="btn btn-primary">View Sub-Questions</a>
+      <!-- Add different status classes based on question status -->
+      <br>
+      <span [ngClass]="{'open-status': question.status === 'open', 'in-progress-status': question.status === 'in progress', 'completed-status': question.status === 'completed'}">{{ question.status | uppercase }}</span>
+    
+    </div>
+  </div>
+  
+</div>
